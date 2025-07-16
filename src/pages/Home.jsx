@@ -1,5 +1,6 @@
 import React from 'react'
 import Card from '../components/Card'
+import './Home.css'
 
 function Home({ products }) {
 
@@ -8,7 +9,7 @@ function Home({ products }) {
   return (
 
 
-    <div className="wrapper">
+    <div className="home-wrapper">
       <div className="row">
         {
           products.map((items) => (
