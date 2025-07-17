@@ -1,7 +1,18 @@
 import React from 'react'
 import {Link,NavLink} from "react-router-dom";
+import Modal from './Modal';
+import { useState } from 'react';
 
 function Nav({products}) {
+    
+    let [showModal,setShowModal] = useState(false);
+    let handleClick=()=>{
+        if(showModal){
+            setShowModal(false);
+        }else{
+            setShowModal(true);
+        }
+    }
     return (
         <>
 
@@ -24,7 +35,7 @@ function Nav({products}) {
                             </li>
                         </ul>
                         <ul>
-                            <button className="btn btn-info me-2">Sign In</button>
+                            <button className="btn btn-info me-2 " onClick={handleClick}>Sign In</button>
                         </ul>
                         <ul>
                             <strong>{products.length}</strong>
@@ -33,6 +44,7 @@ function Nav({products}) {
                     </div>
                 </div>
             </nav>
+            {showModal?<Modal handleClick={handleClick}/>:null}
         </>
     )
 }
