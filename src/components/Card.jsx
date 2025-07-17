@@ -1,10 +1,11 @@
 import React from 'react';
 import './Card.css';
-
-function Card({title, price, image, description}) {
+import { Link } from 'react-router-dom';
+function Card({title, price, image, description,id}) {
   return (
     <div className="col-md-2">
-      <div className="card">
+     <Link to={`/product/${id}`}>
+     <div className="card">
         <img src={image} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
@@ -13,6 +14,7 @@ function Card({title, price, image, description}) {
           <button className="btn btn-primary">Add to Cart</button>
         </div>
       </div>
+     </Link>
     </div>
   );
 }

@@ -13,6 +13,10 @@ function Nav({products}) {
             setShowModal(true);
         }
     }
+    
+
+
+    
     return (
         <>
 
@@ -33,18 +37,25 @@ function Nav({products}) {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to={"/parentlist"}>ParentList</NavLink>
                             </li>
+                            <li>
+                            <strong className='text-danger'>{products.length}</strong>
+                            </li>
+                            
                         </ul>
                         <ul>
-                            <button className="btn btn-info me-2 " onClick={handleClick}>Sign In</button>
+                           <button className="btn btn-info  " onClick={handleClick} >Sign In</button>   
+                              
                         </ul>
-                        <ul>
-                            <strong>{products.length}</strong>
-                        </ul>
+                        
+                        
+
+
+
 
                     </div>
                 </div>
             </nav>
-            {showModal?<Modal handleClick={handleClick}/>:null}
+            { showModal?<Modal handleClick={handleClick}/>:null}
         </>
     )
 }

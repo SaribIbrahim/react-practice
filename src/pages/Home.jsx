@@ -17,6 +17,7 @@ function Home({ products }) {
               price={items.price}
               image={items.image}
               description={items.description}
+              id={items.id}
             />
           ))
         }
