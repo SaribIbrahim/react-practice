@@ -7,6 +7,7 @@ import ParentList from "./pages/ParentList";
 import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
 import Detail from "./pages/Detail";
+import CategoryList from "./pages/CategoryList";
 
 function App() {
   const router=createBrowserRouter(
@@ -17,6 +18,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/parentlist" element={<ParentList products={products}/>}/>
         <Route path="/product/:id" element={<Detail products={products}/>}/>
+        <Route path="/category/:category" element={<CategoryList products={products}/>}/>
         <Route path="*" element={<NotFound />}/>
 
       </Route>
