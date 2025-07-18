@@ -1,27 +1,12 @@
 import React from 'react'
 import ProductCard from '../components/ProductCard'
 import './ParentList.css'
-import { useState, useEffect } from 'react'
+import { useLoaderData } from 'react-router-dom'
 
 
 function ParentList() {
 
-  let [productsAPI, setProductsAPI] = useState([]);
-
-  let getData=async()=>{
-    try{
-      const response=await fetch('https://fakestoreapi.com/products');
-      const data=await response.json();
-      setProductsAPI(data);
-    }
-    catch(error){
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-  getData();      
-  }, []);
+  let productsAPI=useLoaderData();
 
   return (
 

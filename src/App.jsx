@@ -7,18 +7,19 @@ import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
 import Detail from "./pages/Detail";
 import CategoryList from "./pages/CategoryList";
+import { getData } from "./pages/homeloader";
 
 function App() {
   
   const router=createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout/>}>
-        <Route index element={<Home/>} />
+        <Route index element={<Home/>} loader={getData} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/parentlist" element={<ParentList/>}/>
-        <Route path="/product/:id" element={<Detail/>}/>
-        <Route path="/category/:category" element={<CategoryList/>}/>
+        <Route path="/parentlist" element={<ParentList/>} loader={getData}/>
+        <Route path="/product/:id" element={<Detail/>} loader={getData}/>
+        <Route path="/category/:category" element={<CategoryList/>} loader={getData}/>
         <Route path="*" element={<NotFound />}/>
 
       </Route>

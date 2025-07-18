@@ -1,28 +1,11 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useLoaderData } from 'react-router-dom'    
 
 function Detail() {
-    let [productsAPI, setProductsAPI] = useState([]);
-  
-
-    let getData = async()=>{
-        try{
-           
-            const response=await fetch('https://fakestoreapi.com/products');
-            const data=await response.json();
-            setProductsAPI(data);
-            
-        }
-        catch(error){
-            console.log(error);
-        }
-    }
-
-    useEffect(() => {
-        getData();
-    }, []);
     
+    let productsAPI=useLoaderData();
+  
     const {id} = useParams();
     const product = productsAPI.find((item) => String(item.id) === id);
 
