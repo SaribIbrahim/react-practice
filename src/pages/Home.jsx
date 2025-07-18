@@ -5,11 +5,24 @@ import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 function Home() {
 
-  let [productsAPI, setProductsAPI] = useState([]);;
+  let [productsAPI, setProductsAPI] = useState([]);
+  let [loading, setLoading] = useState(true);
+  
+  let getData=async()=>{
+    try{
+      setLoading(true);
+      const response=await fetch('https://fakestoreapi.com/products');
+      const data=await response.json();
+      setProductsAPI(data);
+      setLoading(false);
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then(response => response.json())
-      .then(data => setProductsAPI(data));
+    getData();
   }, []);
 
   return (
@@ -18,7 +31,7 @@ function Home() {
       <div className="home-wrapper">
         <div className="row">
           {
-            productsAPI.map((items) => (
+           loading?<h2>Loading..</h2> :productsAPI.map((items) => (
               <Card
                 title={items.title}
                 price={items.price}

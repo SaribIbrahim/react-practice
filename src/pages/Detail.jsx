@@ -4,11 +4,23 @@ import { useState, useEffect } from 'react'
 
 function Detail() {
     let [productsAPI, setProductsAPI] = useState([]);
+  
+
+    let getData = async()=>{
+        try{
+           
+            const response=await fetch('https://fakestoreapi.com/products');
+            const data=await response.json();
+            setProductsAPI(data);
+            
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
-            .then(response => response.json())
-            .then(data => setProductsAPI(data));
+        getData();
     }, []);
     
     const {id} = useParams();
