@@ -1,13 +1,11 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
 import { useLoaderData } from 'react-router-dom'    
 
 function Detail() {
     
-    let productsAPI=useLoaderData();
+    let product=useLoaderData();
   
-    const {id} = useParams();
-    const product = productsAPI.find((item) => String(item.id) === id);
+    
 
     if (!product) {
         return <h2>Product not found</h2>;

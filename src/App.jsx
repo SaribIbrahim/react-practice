@@ -7,7 +7,7 @@ import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
 import Detail from "./pages/Detail";
 import CategoryList from "./pages/CategoryList";
-import { getData } from "./pages/homeloader";
+import { getData,getDataById,getDataByCategory  } from "./pages/homeloader";
 
 function App() {
   
@@ -18,8 +18,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/parentlist" element={<ParentList/>} loader={getData}/>
-        <Route path="/product/:id" element={<Detail/>} loader={getData}/>
-        <Route path="/category/:category" element={<CategoryList/>} loader={getData}/>
+        <Route path="/product/:id" element={<Detail/>} loader={getDataById}/>
+        <Route path="/category/:category" element={<CategoryList/>} loader={getDataByCategory}/>
         <Route path="*" element={<NotFound />}/>
 
       </Route>
