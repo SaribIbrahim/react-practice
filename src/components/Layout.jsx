@@ -1,12 +1,20 @@
 import React from 'react'
 import {Outlet} from 'react-router-dom'
 import Nav from './Nav'
+import { useState, useEffect } from 'react'
 
+function Layout() {
 
-function Layout({products}) {
+  let [productsAPI, setProductsAPI] = useState([]);
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(data => setProductsAPI(data));
+  }, []);
+
   return (
     <>
-    <Nav products={products} />
+    <Nav products={productsAPI} />
     <Outlet />
     </>
   )

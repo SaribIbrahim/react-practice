@@ -1,10 +1,19 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import Card from '../components/Card'
+import { useState, useEffect } from 'react'
 
-function CategoryList({products}) {
+function CategoryList() {
+  let [productsAPI, setProductsAPI] = useState([]);
+  
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(data => setProductsAPI(data));
+  }, []);
+
     const {category}=useParams();
-    const categoryProducts=products.filter((item)=>item.category==category);
+    const categoryProducts=productsAPI.filter((item)=>item.category==category);
   return (
     <>
     <div className="row">

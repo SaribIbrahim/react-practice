@@ -2,9 +2,15 @@ import React from 'react'
 import Card from '../components/Card'
 import './Home.css'
 import { Link } from 'react-router-dom'
-function Home({ products }) {
+import { useState, useEffect } from 'react'
+function Home() {
 
-
+  let [productsAPI, setProductsAPI] = useState([]);;
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(data => setProductsAPI(data));
+  }, []);
 
   return (
     <>
@@ -12,7 +18,7 @@ function Home({ products }) {
       <div className="home-wrapper">
         <div className="row">
           {
-            products.map((items) => (
+            productsAPI.map((items) => (
               <Card
                 title={items.title}
                 price={items.price}

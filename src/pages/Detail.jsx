@@ -1,9 +1,18 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
-function Detail({products}) {
+function Detail() {
+    let [productsAPI, setProductsAPI] = useState([]);
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products')
+            .then(response => response.json())
+            .then(data => setProductsAPI(data));
+    }, []);
+    
     const {id} = useParams();
-    const product = products.find((item) => String(item.id) === id);
+    const product = productsAPI.find((item) => String(item.id) === id);
 
     if (!product) {
         return <h2>Product not found</h2>;

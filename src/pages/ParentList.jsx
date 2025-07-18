@@ -1,15 +1,25 @@
 import React from 'react'
 import ProductCard from '../components/ProductCard'
 import './ParentList.css'
+import { useState, useEffect } from 'react'
 
 
-function ParentList({products}) {
+function ParentList() {
+
+  let [productsAPI, setProductsAPI] = useState([]);
+  
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(response => response.json())
+      .then(data => setProductsAPI(data));
+  }, []);
 
   return (
+
     <div className="wrapper">
       <div className="row">
         {
-          products.map((items)=>
+          productsAPI.map((items)=>
             <ProductCard
             title={items.title}
             price={items.price}
