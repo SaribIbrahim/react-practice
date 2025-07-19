@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 
 function AddProducts() {
 
@@ -10,20 +11,21 @@ function AddProducts() {
         category: ""
     })  
     
-   let handleSubmit=(e)=>{
+   let handleSubmit=async(e)=>{
    e.preventDefault();
-   
+  let response=await axios.post('https://fakestoreapi.com/products',product)//product:product
+  console.log(response);
    
    }
 
     return (
         <div className='w-50 p-5'>
             <form className="row g-3" onSubmit={handleSubmit}>
-                <div className="col-md-6">
+                <div className="col-12">
                     <label for="Title" className="form-label">Title</label>
                     <input onChange={(e) => { setProduct({ ...product, title: e.target.value }) }} name='title' type="text" className="form-control" id="Title" />
                 </div>
-                <div className="col-md-6">
+                <div className="col-12">
                     <label for="Description" className="form-label">Description</label>
                     <textarea onChange={(e) => { setProduct({ ...product, description: e.target.value }) }} name='description' type="text" className="form-control" id="Description" />
                 </div>
