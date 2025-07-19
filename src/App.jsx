@@ -9,6 +9,7 @@ import Detail from "./pages/Detail";
 import CategoryList from "./pages/CategoryList";
 import { getData,getDataById,getDataByCategory  } from "./components/homeloader"
 import AddProducts from "./pages/AddProducts";
+import TestProducts from "./pages/TestProducts";
 
 function App() {
   
@@ -22,6 +23,9 @@ function App() {
         <Route path="/product/:id" element={<Detail/>} loader={getDataById}/>
         <Route path="/category/:category" element={<CategoryList/>} loader={getDataByCategory}/>
         <Route path="/addproducts" element={<AddProducts/>}/>
+        <Route path="/testproducts" element={<TestProducts/>}/>
+
+        {/* Nested Routes */}
         <Route path="*" element={<NotFound />}/>
 
       </Route>

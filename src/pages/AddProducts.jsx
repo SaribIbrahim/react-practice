@@ -13,7 +13,7 @@ function AddProducts() {
         // image:"",
         category:""
     },
-    validationSchema:Yup.object().shape({
+    validationSchema:Yup.object({
         title:Yup.string("Title must be a string").required("Title is required").min(5,"Title must be alteast 5 characters"),
         description:Yup.string("Description must be a string").required("Description is required"),
         price:Yup.number().typeError("Price must be a number").required("Price is required").min(10,"Minimum price must be $10"),
