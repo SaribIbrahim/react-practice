@@ -7,7 +7,8 @@ import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
 import Detail from "./pages/Detail";
 import CategoryList from "./pages/CategoryList";
-import { getData,getDataById,getDataByCategory  } from "./pages/homeloader";
+import { getData,getDataById,getDataByCategory  } from "./components/homeloader"
+import AddProducts from "./pages/AddProducts";
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
         <Route path="/parentlist" element={<ParentList/>} loader={getData}/>
         <Route path="/product/:id" element={<Detail/>} loader={getDataById}/>
         <Route path="/category/:category" element={<CategoryList/>} loader={getDataByCategory}/>
+        <Route path="/addproducts" element={<AddProducts/>}/>
         <Route path="*" element={<NotFound />}/>
 
       </Route>

@@ -37,6 +37,9 @@ function Nav({products}) {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to={"/parentlist"}>ParentList</NavLink>
                             </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to={"/addproducts"}>AddProducts</NavLink>
+                            </li>
                             <li>
                             <strong className='text-danger'>{products.length}</strong>
                             </li>
