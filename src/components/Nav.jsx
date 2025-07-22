@@ -1,33 +1,32 @@
 import React from 'react'
-import {Link,NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Modal from './Modal';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { deposit } from '../features/deposit/depositSlice';
+import "./Nav.css"
 
 
-function Nav({products}) {
-    
-    let [showModal,setShowModal] = useState(false);
-    let handleClick=()=>{
-        if(showModal){
+function Nav() {
+
+    let [showModal, setShowModal] = useState(false);
+    let handleClick = () => {
+        if (showModal) {
             setShowModal(false);
-        }else{
+        } else {
             setShowModal(true);
         }
     }
 
-    const {depAmount}=useSelector((state)=>state.rootReducer);
+    const { depAmount, cart } = useSelector((state) => state.rootReducer);
 
     const dispatch = useDispatch();
-    const Deposit=()=>{
-       dispatch(deposit(20))
+    const Deposit = () => {
+        dispatch(deposit(20))
     }
-    
 
 
-    
     return (
         <>
 
@@ -55,25 +54,32 @@ function Nav({products}) {
                                 <NavLink className="nav-link" to={"/testproducts"}>TestProducts</NavLink>
                             </li>
                             <li><button onClick={Deposit}>Deposit ${depAmount.value}</button></li>
-                            <li>
-                            <strong className='text-danger'>{products.length}</strong>
-                            </li>
-                            
                         </ul>
                         <ul>
-                           <button className="btn btn-info  " onClick={handleClick} >Sign In</button>   
-                              
+                            <button className="btn btn-info  " onClick={handleClick} >Sign In</button>
+
                         </ul>
-                        
-                        
+                        <Link to={"/cart"}>
+                        <ul>
+                            <li>
+                                <div className="btn btn-primary">
+                                    <i class="bi bi-cart"></i>{cart.cart.length}
+                                </div>
+                            </li>
+
+                        </ul>
+                    </Link>
 
 
 
 
-                    </div>
+
+
                 </div>
-            </nav>
-            { showModal?<Modal handleClick={handleClick}/>:null}
+            </div>
+        </nav >
+            { showModal?<Modal handleClick = { handleClick }/>: null
+}
         </>
     )
 }
