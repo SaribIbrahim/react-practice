@@ -10,7 +10,7 @@ const depositSlice=createSlice({
     initialState: initialState,
     reducers:{
        deposit:(state,action)=>{
-        state.value=action.payload;
+        state.value+=action.payload;
        }
     }
 })

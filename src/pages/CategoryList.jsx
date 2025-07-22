@@ -12,12 +12,7 @@ function CategoryList() {
         {
             productsAPI.map((item)=>(
                 <Card 
-                title={item.title}
-                price={item.price}
-                image={item.image}
-                description={item.description}
-                id={item.id}
-                category={item.category}
+                    products={item}
                 />
             ))
         }
