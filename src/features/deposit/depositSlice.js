@@ -1,0 +1,20 @@
+import { createSlice } from "@reduxjs/toolkit";
+
+
+const initialState = {
+  value: 0,
+};
+
+const depositSlice=createSlice({
+    name: "deposit",
+    initialState: initialState,
+    reducers:{
+       deposit:(state,action)=>{
+        state.value=action.payload;
+       }
+    }
+})
+
+export const { deposit } = depositSlice.actions;
+
+export default depositSlice.reducer;

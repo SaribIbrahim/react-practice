@@ -2,6 +2,10 @@ import React from 'react'
 import {Link,NavLink} from "react-router-dom";
 import Modal from './Modal';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deposit } from '../features/deposit/depositSlice.js';
+import { useSelector } from 'react-redux';
+
 
 function Nav({products}) {
     
@@ -12,6 +16,13 @@ function Nav({products}) {
         }else{
             setShowModal(true);
         }
+    }
+
+    const {value}=useSelector((state)=>state.deposit);
+
+    const dispatch = useDispatch();
+    const Deposit=()=>{
+       dispatch(deposit(20))
     }
     
 
@@ -43,6 +54,7 @@ function Nav({products}) {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to={"/testproducts"}>TestProducts</NavLink>
                             </li>
+                            <li><button onClick={Deposit}>Deposit ${value}</button></li>
                             <li>
                             <strong className='text-danger'>{products.length}</strong>
                             </li>
