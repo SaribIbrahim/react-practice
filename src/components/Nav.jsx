@@ -63,7 +63,7 @@ function Nav() {
                         <ul>
                             <li>
                                 <div className="btn btn-primary">
-                                    <i class="bi bi-cart"></i>{cart.cart.length}
+                                    <i className="bi bi-cart"></i>{cart.cart.length}
                                 </div>
                             </li>
 
